@@ -27,7 +27,7 @@ class ActorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('front.Actor.add');
     }
 
     /**
@@ -38,7 +38,21 @@ class ActorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      //validacion, recibe un array con mis criterios de validacion
+      $request->validate([
+      // input_name=>reglas;
+      'name'=>'required | max:15',
+      'last_name'=>'required'
+    ], [
+      //input_name.rule=>message
+      // 'title.required'=>'el campo titulo es obligatorio',
+      // 'rating.required'=>'el campo titulo es obligatorio'
+      'required'=>'El campo :attribute es obligatorio',
+      'title.max'=>'El campo :attribute tiene que tener como máx 15 caracteres'
+
+    ]);
+
+    return view('front.Actor.add');
     }
 
     /**

@@ -6,7 +6,8 @@
 @section('mainContent')
 
 <h2>Soy el index de Peliculas</h2>
-
+ <p>En la DB hay un total de {{ count($movies)}} películas</p>
+ {{-- boton de crear pelicula --}}
 <ul>
   @foreach ($movies as $movie)
     <li>

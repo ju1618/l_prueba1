@@ -26,7 +26,7 @@ class MoviesController extends Controller
    */
   public function create()
   {
-      //
+    return view('front.Movie.create');
   }
 
   /**
@@ -35,9 +35,26 @@ class MoviesController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(Request $request) //inyeccion de dependencias
   {
-      //
+    //validacion, recibe un array con mis criterios de validacion
+    $request->validate([
+    // input_name=>reglas;
+    'title'=>'required | max:15',
+    'rating'=>'required | numeric | min:0 | max:10'
+  ], [
+    //input_name.rule=>message
+    // 'title.required'=>'el campo titulo es obligatorio',
+    // 'rating.required'=>'el campo titulo es obligatorio'
+    'required'=>'El campo :attribute es obligatorio',
+    'title.max'=>'El campo :attribute tiene que tener como máx 15 caracteres',
+    'rating.numeric'=>'El campo :attribute tiene que ser un número',
+    'rating.min'=>'El campo :attribute tiene que ser como mínimo 0',
+    'rating.max'=>'El campo :attribute tiene que ser como máximo 10',
+
+  ]);
+
+  return view('front.Movie.create');
   }
 
   /**

@@ -49,15 +49,15 @@ Route::get('/pelis', function () {
 // });
 
 Route::get('/actors', 'ActorsController@index');
-
+// Route::post('/actors', 'ActorsController@store');
+Route::get('/actors/add', 'ActorsController@create');
 Route::get('/actors/{id}', 'ActorsController@showActors');
-
 Route::get('/actors/search', 'ActorsController@search');
-
 Route::get('/actors/result/{request}', 'ActorsController@result');
 
 Route::get('/movies', 'MoviesController@index');
-
+Route::post('/movies', 'MoviesController@store'); //metodo para guardar peliculas
+Route::get('/movies/create', 'MoviesController@create'); //formulario de creacion de pelicula
 Route::get('/movies/{id}', 'MoviesController@showMovies');
 
 Route::get('/genres', 'GenresControlles@index');

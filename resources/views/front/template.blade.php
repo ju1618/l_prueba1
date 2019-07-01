@@ -9,8 +9,12 @@
 	<body>
 
 		@include('front.navbar')
+		
+		<div class="container">
 
 		@yield('mainContent')
+
+		</div>
 
 		@yield('secondContent')
 	</body>
