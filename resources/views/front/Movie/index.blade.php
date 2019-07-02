@@ -7,7 +7,9 @@
 
 <h2>Soy el index de Peliculas</h2>
  <p>En la DB hay un total de {{ count($movies)}} películas</p>
- {{-- boton de crear pelicula --}}
+ <a href="/movies/create" class="btn btn-outline-info">Crear pelicular</a>
+ <br><br>
+
 <ul>
   @foreach ($movies as $movie)
     <li>

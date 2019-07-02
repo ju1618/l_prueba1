@@ -43,13 +43,13 @@ class ActorsController extends Controller
       // input_name=>reglas;
       'name'=>'required | max:15',
       'last_name'=>'required'
-    ], [
+    ],
+    [
       //input_name.rule=>message
       // 'title.required'=>'el campo titulo es obligatorio',
       // 'rating.required'=>'el campo titulo es obligatorio'
       'required'=>'El campo :attribute es obligatorio',
       'title.max'=>'El campo :attribute tiene que tener como máx 15 caracteres'
-
     ]);
 
     return view('front.Actor.add');

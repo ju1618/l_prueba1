@@ -41,7 +41,7 @@
         <input
         type="text"
         name="rating"
-        value="{{ $errors->first('title') ? null : old('rating')}}"
+        value="{{ $errors->first('rating') ? null : old('rating')}}"
         class="form-control"
         >
         @if ($errors->has('rating'))

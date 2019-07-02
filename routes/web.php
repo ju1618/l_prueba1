@@ -49,7 +49,7 @@ Route::get('/pelis', function () {
 // });
 
 Route::get('/actors', 'ActorsController@index');
-// Route::post('/actors', 'ActorsController@store');
+Route::post('/actors', 'ActorsController@store');
 Route::get('/actors/add', 'ActorsController@create');
 Route::get('/actors/{id}', 'ActorsController@showActors');
 Route::get('/actors/search', 'ActorsController@search');
