@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Actor;
-
-class ActorsController extends Controller
+class TestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,7 @@ class ActorsController extends Controller
      */
     public function index()
     {
-			$actors = Actor::all();
-
-			return view('front.Actor.index', compact('actors'));
+        //
     }
 
     /**
@@ -49,9 +45,7 @@ class ActorsController extends Controller
      */
     public function show($id)
     {
-      $theActor = Actor::find($id);
-
-			return view('front.Actor.show', compact('theActor'));
+        //
     }
 
     /**
@@ -87,16 +81,4 @@ class ActorsController extends Controller
     {
         //
     }
-
-		public function search()
-		{
-			return view('front.Actor.search');
-		}
-
-		public function result(Request $request)
-		{
-			$actors = Actor::where('first_name', 'LIKE', '%' . $request->word . '%')->get();
-
-			return view('front.Actor.result', compact('actors'));
-		}
 }

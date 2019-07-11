@@ -1,5 +1,8 @@
 <?php
 
+use App\Movie;
+use App\Actor;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,53 +14,43 @@
 |
 */
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-//
-// Route::get('/miPrimerRuta', function () {
-//     return 'Creé mi primer ruta en Laravel';
-// });
-
-// Route::get('/resultado/{numero}/{multiplica?}', function ($numero, $multiplica=null) {
-//   if ($multiplica){
-//     $producto = $numero*$multiplica;
-//     return "Los numeros son $numero y $multiplica, y el resultado de su producto es $producto";
-//   } else{
-//     if ($numero%2==0){
-//       return "El número $numero es par";
-//     }else {
-//       return "El número $numero es impar";
-//     }
-//   }
-// });
-
-Route::get('/movies/detail/{id}', 'MoviesController@searchMovieById');
-
-Route::get('/movies/find/{name}', 'MoviesController@findMovieByName');
-
-Route::get('/pelis', function () {
-    return view('movies');
+/*
+	Start - Rutas de prueba
+*/
+Route::get('/', 'WebController@index');
+Route::get('/saludar/{name}', 'WebController@sayHello');
+Route::get('/admin', function () {
+	return view('back.index');
 });
 
-// Route::get('/movies', function () {
-//     //voy al namespace y ejecuto el metodo all
-//     $allMovies = \App\Movies::all();
-//
-//     return $allMovies;
-// });
+/*
+	Rutas Recurso Movies
+*/
+Route::get('/movies/', 'MoviesController@index'); // Index para películas
+Route::post('/movies', 'MoviesController@store'); // Guardar en DB
+Route::get('/movies/create', 'MoviesController@create'); // Formulario para crear
+Route::get('/movies/{id}', 'MoviesController@show'); // Muestra UNA película
+Route::put('/movies/{id}', 'MoviesController@update'); // Ruta para actualizar una película
+Route::delete('/movies/{id}', 'MoviesController@destroy'); // Ruta para borrar una película
+Route::get('/movies/{id}/edit', 'MoviesController@edit'); // Formulario para editar
 
+/*
+	Rutas Recurso Actors
+*/
 Route::get('/actors', 'ActorsController@index');
-Route::post('/actors', 'ActorsController@store');
-Route::get('/actors/add', 'ActorsController@create');
-Route::get('/actors/{id}', 'ActorsController@showActors');
 Route::get('/actors/search', 'ActorsController@search');
-Route::get('/actors/result/{request}', 'ActorsController@result');
+Route::get('/actors/result/', 'ActorsController@result');
+Route::get('/actors/{id}', 'ActorsController@show');
 
-Route::get('/movies', 'MoviesController@index');
-Route::post('/movies', 'MoviesController@store'); //metodo para guardar peliculas
-Route::get('/movies/create', 'MoviesController@create'); //formulario de creacion de pelicula
-Route::get('/movies/{id}', 'MoviesController@showMovies');
+// Si queremos un Controller con la plantilla de todos los métodos más comunes hacemos: php artisan make:controller EntitiesController --resource
 
-Route::get('/genres', 'GenresControlles@index');
+Route::get('/genres', function ()
+{
+	$genres = \App\Genre::all();
+
+	echo 'Películas para el género <br>';
+	echo $genres[2]->name . '<br>';
+	foreach ($genres[2]->movies as $movie) {
+		echo "$movie->title <br>";
+	}
+});

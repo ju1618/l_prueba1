@@ -1,4 +1,3 @@
-{{-- plantilla para la estructura --}}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
@@ -7,13 +6,10 @@
 		<link rel="stylesheet" href="/css/app.css">
 	</head>
 	<body>
-
 		@include('front.navbar')
-		
+
 		<div class="container">
-
-		@yield('mainContent')
-
+			@yield('mainContent')
 		</div>
 
 		@yield('secondContent')

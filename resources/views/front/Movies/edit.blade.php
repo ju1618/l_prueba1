@@ -14,7 +14,7 @@
 		</ul>
 	@endif
 
-	<form action="/movies/{{ $movieToEdit->id }}" method="post">
+	<form action="/movies/{{ $movieToEdit->id }}" method="post" enctype="multipart/form-data">
 		@csrf
 		{{ method_field('put') }}
 		<div class="row">
@@ -122,11 +122,47 @@
 				</div>
 			</div>
 
+			<div class="col-6">
+				<div class="form-group">
+					<label>Subí una imagen</label>
+					<input type="file" name="poster" class="form-control">
+				</div>
+			</div>
+
 			<div class="col-12">
 				<button type="submit" class="btn btn-success">ENVIAR</button>
 			</div>
 		</div>
-</form>
+	</form>
 
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 @endsection

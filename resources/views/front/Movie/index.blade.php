@@ -6,7 +6,7 @@
 @section('mainContent')
 
 <h2>Soy el index de Peliculas</h2>
- <p>En la DB hay un total de {{ count($movies)}} películas</p>
+ <p>En la DB hay un total de {{ $totalMovies }} películas</p> 
  <a href="/movies/create" class="btn btn-outline-info">Crear pelicular</a>
  <br><br>
 
@@ -22,5 +22,7 @@
     <br>
   @endforeach
 </ul>
+{{-- muestra los links de la paginacion que puse en moviescontrolles  --}}
+{{$movies->links()}}
 
 @endsection
