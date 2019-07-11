@@ -15,9 +15,14 @@ class ActorsController extends Controller
      */
     public function index()
     {
-			$actors = Actor::all();
+			// $actors = Actor::all();
+      //
+			// return view('front.Actor.index', compact('actors'));
 
-			return view('front.Actor.index', compact('actors'));
+      $actors = Actor::paginate(5);
+  		$totalActors = count(Actor::all());
+
+  		return view('front/Actors/index', compact('actors', 'totalActors'));
     }
 
     /**
@@ -51,7 +56,7 @@ class ActorsController extends Controller
     {
       $theActor = Actor::find($id);
 
-			return view('front.Actor.show', compact('theActor'));
+			return view('front.Actors.show', compact('theActor'));
     }
 
     /**
@@ -90,13 +95,13 @@ class ActorsController extends Controller
 
 		public function search()
 		{
-			return view('front.Actor.search');
+			return view('front.Actors.search');
 		}
 
 		public function result(Request $request)
 		{
 			$actors = Actor::where('first_name', 'LIKE', '%' . $request->word . '%')->get();
 
-			return view('front.Actor.result', compact('actors'));
+			return view('front.Actors.result', compact('actors'));
 		}
 }

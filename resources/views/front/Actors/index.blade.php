@@ -3,6 +3,8 @@
 @section('pageTitle', 'Listado de actores')
 
 @section('mainContent')
+	<h2>Listado de Actores</h2>
+	<br><br>
 	<ul>
 		@foreach ($actors as $actor)
 			<li>
@@ -12,4 +14,7 @@
 			<br>
 		@endforeach
 	</ul>
+
+	{{-- Imprimo la paginación --}}
+	{{ $actors->links() }}
 @endsection

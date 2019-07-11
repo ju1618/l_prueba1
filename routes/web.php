@@ -54,3 +54,8 @@ Route::get('/genres', function ()
 		echo "$movie->title <br>";
 	}
 });
+
+
+/* ruta practica*/
+
+Route::get('/subirimagen', 'ImagenController@create');

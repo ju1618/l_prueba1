@@ -18,5 +18,5 @@
 	{{-- Imprimo la paginación --}}
 	{{ $movies->links() }}
 
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 @endsection
